@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>22Tech</title>
+    <link
+      rel="stylesheet"
+      href="https://use.fontawesome.com/releases/v5.8.1/css/all.css"
+      integrity="sha384-50oBUHEmvpQ+1lW4y57PTFmhCaXp0ML5d60M1M7uH2+nqUivzIebhndOJK28anvf"
+      crossorigin="anonymous"
+    />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="./main.css" />
+  </head>
+  <body>
+    <header>
+      <div class="navbar">
+        <span class="nav-icon">
+          <i class="fas fa-bars"></i>
+        </span>
+        <h2 id="logo">22Tech</h2>
+        <div class="cart-btn">
+          <span class="nav-icon">
+            <i class="fas fa-cart-plus"></i>
+          </span>
+          <div class="cart-items">0</div>
+        </div>
+      </div>
+    </header>
+
+    <div class="slider-container">
+      <i class="fas fa-arrow-left" id="prevBtn"></i>
+      <i class="fas fa-arrow-right" id="nextBtn"></i>
+      <div class="image-container">
+        <img src="./images/4.jpg" id="lastClone" alt="" />
+        <img src="./images/1.jpg" alt="" />
+        <img src="./images/2.jpg" alt="" />
+        <img src="./images/3.jpg" alt="" />
+        <img src="./images/4.jpg" alt="" />
+        <img src="./images/1.jpg" id="firstClone" alt="" />
+      </div>
+    </div>
+
+    <section class="options">
+      <button class="box" id="smartphone">Smart Phone</button>
+      <button class="box" id="laptop">Laptop</button>
+      <button class="box" id="tablet">Tablets</button>
+      <button class="box" id="smartwatch">Smart Watch</button>
+    </section>
+
+    <section class="products">
+      <div class="brand-header">
+        <h2>Apple</h2>
+      </div>
+      <div class="product">
+        <div class="img-container">
+          <img class="product-img" src="./images/phone/iphone11.jpg" alt="" />
+        </div>
+        <h3>iPhone 11</h3>
+        <h4>$<span data-id="1">1999</span></h4>
+        <button class="bag-btn" data-id="1">Add To Bag</button>
+      </div>
+    </section>
+
+    <div class="cart-overlay">
+      <div class="cart">
+        <span class="close-cart"><i class="far fa-window-close"></i></span>
+        <h2>Your Cart</h2>
+        <div class="cart-content">
+          <div class="cart-item">
+            <img src="./images/phone/iphone11.jpg" alt="" />
+            <div class="info-remove">
+              <h3>iPhone 11</h3>
+              <h4>$<span data-id="1">1999</span></h4>
+              <button class="remove-item">remove</button>
+            </div>
+            <div>
+              <i class="fas fa-chevron-up"></i>
+              <p class="item-amount">1</p>
+              <i class="fas fa-chevron-down"></i>
+            </div>
+          </div>
+        </div>
+        <div class="cart-footer">
+          <h3>Total: $<span id="your-total">0</span></h3>
+          <button class="place-order">Place Order</button>
+        </div>
+      </div>
+    </div>
+
+    <footer>
+      <h4>
+        Lorem ipsum dolor sit amet consectetur adipisicing elit. Corporis
+        molestias, iusto non ullam facilis reprehenderit?
+      </h4>
+      <h4>Lorem ipsum dolor sit amet.</h4>
+      <h4>Lorem ipsum dolor sit amet, consectetur adipisicing.</h4>
+    </footer>
+
+    <script src="./main.js"></script>
+  </body>
+</html>

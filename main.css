@@ -1,0 +1,299 @@
+*,
+*::after,
+*::before {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+:root {
+  --mainWhite: #fff;
+  --mainBlack: rgb(48, 47, 47);
+  --mainGrey: rgb(235, 232, 232);
+  --mainTransition: all 0.25s linear;
+}
+
+body {
+  font-family: "Montserrat", sans-serif;
+}
+
+header {
+  background: var(--mainBlack);
+  color: white;
+  position: sticky;
+  top: 0;
+  height: 50px;
+  width: 100%;
+  z-index: 1;
+  display: flex;
+  align-items: center;
+}
+
+.navbar {
+  width: 75%;
+  margin: 0 auto;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.navbar h2 {
+  pointer-events: none;
+}
+
+.nav-icon {
+  font-size: 1.25rem;
+  cursor: pointer;
+}
+
+.cart-btn {
+  position: relative;
+  cursor: pointer;
+}
+
+.cart-items {
+  position: absolute;
+  top: -8px;
+  right: -8px;
+  background: var(--mainBlack);
+  border-radius: 25%;
+}
+
+.slider-container {
+  width: 70%;
+  margin: 1.5em auto;
+  overflow: hidden;
+  position: relative;
+}
+
+.image-container {
+  display: flex;
+  width: 100%;
+  max-height: 800px;
+}
+
+.image-container > img {
+  width: 100%;
+}
+
+.slider-container i {
+  font-size: 3rem;
+  position: absolute;
+  z-index: 1;
+  top: 50%;
+  transform: translateY(-50%);
+  color: rgb(219, 213, 213);
+  cursor: pointer;
+  transition: var(--mainTransition);
+  display: none;
+}
+
+.slider-container i:hover {
+  color: white;
+}
+
+#prevBtn {
+  left: 0.25em;
+}
+
+#nextBtn {
+  right: 0.25em;
+}
+
+.options {
+  width: 100%;
+  max-width: 1170px;
+  margin: 0 auto;
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+
+.box {
+  width: 200px;
+  height: 100px;
+  font-family: Montserrat;
+  font-size: 1.35rem;
+  font-weight: 700;
+  background: var(--mainGrey);
+  padding: 1em;
+  margin: 1em 1.25em;
+  border: none;
+  cursor: pointer;
+  transition: var(--mainTransition);
+}
+
+.box:hover {
+  background: var(--mainBlack);
+  color: var(--mainWhite);
+}
+
+.boxActive {
+  background: var(--mainBlack);
+  color: var(--mainWhite);
+}
+
+.products {
+  width: 80%;
+  margin: 1.5em auto;
+  display: flex;
+  margin-top: 1em;
+  flex-wrap: wrap;
+  justify-content: space-evenly;
+}
+
+.product-img {
+  width: 100%;
+}
+
+.brand-header {
+  border-bottom: 2px solid black;
+  width: 90%;
+}
+
+.product {
+  min-height: 270px;
+  width: 200px;
+  text-align: center;
+  margin: 1.75em 0 0.5em 0;
+}
+
+.product h3 {
+  font-size: 1.2rem;
+}
+
+.bag-btn {
+  font-family: Montserrat;
+  border: none;
+  background: var(--mainGrey);
+  font-weight: 600;
+  font-size: 1.05rem;
+  padding: 1em;
+  cursor: pointer;
+}
+
+.bag-btn:hover {
+  background: var(--mainBlack);
+  color: var(--mainWhite);
+}
+
+.cart-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  transition: var(--mainTransition);
+  background: rgba(211, 211, 211, 0.493);
+  z-index: 3;
+  visibility: hidden;
+}
+
+.cart {
+  position: absolute;
+  top: 0;
+  right: 0;
+  width: 100%;
+  height: 100%;
+  overflow: scroll;
+  background: white;
+  z-index: 4;
+  padding: 1.25em;
+  transition: var(--mainTransition);
+  transform: translateX(100%);
+}
+
+.showCart {
+  transform: translateX(0);
+}
+
+@media screen and (min-width: 768px) {
+  .cart {
+    width: 21vw;
+    min-width: 360px;
+  }
+}
+
+.close-cart {
+  font-size: 1.75rem;
+  cursor: pointer;
+}
+
+.cart h2 {
+  text-align: center;
+  margin-bottom: 1em;
+}
+
+.cart-item {
+  display: flex;
+  align-items: center;
+  margin-bottom: 1.75em;
+}
+
+.cart-item img {
+  width: 100px;
+  height: 100px;
+  flex: 1;
+}
+
+.info-remove {
+  flex: 2;
+  margin-left: 0.75em;
+}
+
+.info-remove h3 {
+  font-size: 1.3rem;
+}
+
+.info-remove h4 {
+  margin: 0.25em 0;
+}
+
+.remove-item {
+  padding: 0.2em 0.5em;
+  font-size: 1.001rem;
+  background: var(--mainGrey);
+  border: none;
+  transition: var(--mainTransition);
+  cursor: pointer;
+}
+
+.remove-item:hover,
+.place-order:hover {
+  background-color: var(--mainBlack);
+  color: var(--mainWhite);
+}
+
+.item-amount {
+  text-align: center;
+}
+
+.fa-chevron-up,
+.fa-chevron-down {
+  cursor: pointer;
+}
+
+.cart-footer {
+  text-align: center;
+}
+
+.place-order {
+  font-family: Montserrat, sans-serif;
+  font-size: 1.25rem;
+  font-weight: bold;
+  border: none;
+  background: var(--mainGrey);
+  padding: 0.75em;
+  cursor: pointer;
+  transition: var(--mainTransition);
+}
+
+footer {
+  width: 100%;
+  background: rgb(19, 19, 19);
+  color: var(--mainWhite);
+  height: 150px;
+  font-weight: 400;
+  text-align: center;
+  padding-top: 2em;
+}

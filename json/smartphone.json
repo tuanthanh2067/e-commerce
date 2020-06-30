@@ -1,0 +1,59 @@
+{
+  "items": [
+    {
+      "id": 1,
+      "brand": "Apple",
+      "title": "iPhone 11",
+      "price": 1100,
+      "image": "./images/phone/iphone11.jpg"
+    },
+
+    {
+      "id": 2,
+      "brand": "Apple",
+      "title": "iPhone 11 Max",
+      "price": 1400,
+      "image": "./images/phone/iphone11.jpg"
+    },
+
+    {
+      "id": 7,
+      "brand": "Apple",
+      "title": "iPhone 11 Pro Max",
+      "price": 1700,
+      "image": "./images/phone/iphone11.jpg"
+    },
+
+    {
+      "id": 3,
+      "brand": "Samsung",
+      "title": "Samsung Max 1",
+      "price": 1400,
+      "image": "./images/phone/samsung.jpg"
+    },
+
+    {
+      "id": 4,
+      "brand": "Samsung",
+      "title": "Samsung Max 2",
+      "price": 1400,
+      "image": "./images/phone/samsung.jpg"
+    },
+
+    {
+      "id": 5,
+      "brand": "Google",
+      "title": "Google Pixel 1",
+      "price": 1400,
+      "image": "./images/phone/google.png"
+    },
+
+    {
+      "id": 6,
+      "brand": "Google",
+      "title": "Google Pixel 2",
+      "price": 1400,
+      "image": "./images/phone/google.png"
+    }
+  ]
+}

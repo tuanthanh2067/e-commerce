@@ -1,0 +1,39 @@
+{
+  "items": [
+    {
+      "id": 13,
+      "brand": "Apple",
+      "title": "iPad Pro 11",
+      "price": 1100,
+      "image": "./images/ipad/ipad.jpg"
+    },
+    {
+      "id": 14,
+      "brand": "Apple",
+      "title": "iPad Pro 12",
+      "price": 1100,
+      "image": "./images/ipad/ipad2.jpg"
+    },
+    {
+      "id": 15,
+      "brand": "Apple",
+      "title": "iPad Pro 13",
+      "price": 1100,
+      "image": "./images/ipad/ipad.jpg"
+    },
+    {
+      "id": 16,
+      "brand": "Samsung",
+      "title": "iPad Pro 14",
+      "price": 1100,
+      "image": "./images/ipad/ipad2.jpg"
+    },
+    {
+      "id": 17,
+      "brand": "Samsung",
+      "title": "iPad Pro 15",
+      "price": 1100,
+      "image": "./images/ipad/ipad.jpg"
+    }
+  ]
+}

@@ -1,0 +1,39 @@
+{
+  "items": [
+    {
+      "id": 18,
+      "brand": "Apple",
+      "title": "Apple Watch 3",
+      "price": 1100,
+      "image": "./images/smartwatch/smartwatch.jpg"
+    },
+    {
+      "id": 19,
+      "brand": "Apple",
+      "title": "Apple Watch 4",
+      "price": 1400,
+      "image": "./images/smartwatch/smartwatch.jpg"
+    },
+    {
+      "id": 20,
+      "brand": "Apple",
+      "title": "Apple Watch 5",
+      "price": 1700,
+      "image": "./images/smartwatch/smartwatch.jpg"
+    },
+    {
+      "id": 21,
+      "brand": "Google",
+      "title": "Google Watch 3",
+      "price": 1400,
+      "image": "./images/smartwatch/smartwatch2.jpg"
+    },
+    {
+      "id": 22,
+      "brand": "Google",
+      "title": "Google Watch 3",
+      "price": 1400,
+      "image": "./images/smartwatch/smartwatch2.jpg"
+    }
+  ]
+}

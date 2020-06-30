@@ -1,0 +1,39 @@
+{
+  "items": [
+    {
+      "id": 8,
+      "brand": "Apple",
+      "title": "Macbook Pro 13",
+      "price": 1100,
+      "image": "./images/laptop/macbook.jpg"
+    },
+    {
+      "id": 9,
+      "brand": "Apple",
+      "title": "Macbook Pro 13",
+      "price": 1400,
+      "image": "./images/laptop/macbook.jpg"
+    },
+    {
+      "id": 10,
+      "brand": "Apple",
+      "title": "Macbook Pro 16",
+      "price": 1700,
+      "image": "./images/laptop/macbook16.jpg"
+    },
+    {
+      "id": 11,
+      "brand": "Google",
+      "title": "Google Surface 3",
+      "price": 1400,
+      "image": "./images/laptop/surface.jpg"
+    },
+    {
+      "id": 12,
+      "brand": "Google",
+      "title": "Google Surface 3 Pro",
+      "price": 1400,
+      "image": "./images/laptop/surface.jpg"
+    }
+  ]
+}
