@@ -54,10 +54,13 @@ sliderContainer.addEventListener("mouseout", () => {
 
 // image slider ends here
 let itemsLoaded = []; // each array will store name of that kind of item and info
+let userCart = [];
 // variables
 
 // end variables area
 const productsDOM = document.querySelector(".products");
+const amountPicked = document.querySelector(".cart-items");
+const totalMoney = document.querySelector("#your-total");
 
 class Products {
   async getProducts(name) {
@@ -111,21 +114,80 @@ class UI {
 
     productsDOM.innerHTML = text1;
   }
+  getBagButtons(name) {
+    let buttons = document.querySelectorAll(".bag-btn");
+    buttons.forEach((button) => {
+      const id = parseInt(button.dataset.id);
+      const inCart = userCart.find((item) => item.info.id === id);
+
+      if (inCart) {
+        button.innerText = "In Cart";
+        button.disabled = true;
+      }
+
+      button.addEventListener("click", (event) => {
+        event.target.innerText = "In Cart";
+        event.target.disabled = true;
+        const id = parseInt(event.target.dataset.id);
+        let target;
+        for (let i = 0; i < itemsLoaded.length; i++) {
+          if (itemsLoaded[i].name === name) {
+            target = itemsLoaded[i];
+          }
+        }
+        const product = target.products.find((item) => item.id === id);
+        const picked = { info: product, amount: 1 };
+        userCart.push(picked);
+        Store.saveCartToLocal(userCart);
+        this.updateCartInfo(userCart);
+      });
+    });
+  }
+
+  updateCartInfo(userCart) {
+    let money = 0;
+    let amount = 0;
+
+    userCart.forEach((one) => {
+      amount += one.amount;
+      money += one.info.price * one.amount;
+    });
+
+    amountPicked.innerText = amount;
+    totalMoney.innerText = money;
+  }
+
+  settings() {
+    userCart = Store.loadCart();
+    this.updateCartInfo(userCart);
+  }
 }
 
 class Store {
   static saveArrayProducts() {
     localStorage.setItem("arr", JSON.stringify(itemsLoaded));
   }
+  static saveCartToLocal(cart) {
+    localStorage.setItem("cart", JSON.stringify(cart));
+  }
+  static loadCart() {
+    return localStorage.getItem("cart")
+      ? JSON.parse(localStorage.getItem("cart"))
+      : [];
+  }
 }
 
 document.addEventListener("DOMContentLoaded", () => {
   const ui = new UI();
   const products = new Products();
+
+  ui.settings();
+
   products.getProducts("smartphone").then((product) => {
     ui.displayProducts(product);
     products.saveProductsToArray(product, "smartphone");
     Store.saveArrayProducts();
+    ui.getBagButtons("smartphone");
   });
 
   const boxesDOM = [...document.querySelectorAll(".box")];
@@ -144,6 +206,7 @@ document.addEventListener("DOMContentLoaded", () => {
         if (itemsLoaded[i].name === name) {
           ui.displayProducts(itemsLoaded[i].products);
           temp = 1;
+          ui.getBagButtons(name);
         }
       }
       if (temp === 0) {
@@ -151,6 +214,7 @@ document.addEventListener("DOMContentLoaded", () => {
           ui.displayProducts(product);
           products.saveProductsToArray(product, name);
           Store.saveArrayProducts();
+          ui.getBagButtons(name);
         });
       }
     });
