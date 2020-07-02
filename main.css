@@ -189,6 +189,10 @@ header {
   visibility: hidden;
 }
 
+.showCartOverlay {
+  visibility: visible;
+}
+
 .cart {
   position: absolute;
   top: 0;

@@ -61,6 +61,11 @@ let userCart = [];
 const productsDOM = document.querySelector(".products");
 const amountPicked = document.querySelector(".cart-items");
 const totalMoney = document.querySelector("#your-total");
+const cartOverlay = document.querySelector(".cart-overlay");
+const mainCart = document.querySelector(".cart");
+const cartButton = document.querySelector(".cart-btn");
+const closeButtonInCart = document.querySelector(".fa-window-close");
+const cartContent = document.querySelector(".cart-content");
 
 class Products {
   async getProducts(name) {
@@ -140,6 +145,8 @@ class UI {
         userCart.push(picked);
         Store.saveCartToLocal(userCart);
         this.updateCartInfo(userCart);
+        this.openCart();
+        this.displayCart(userCart);
       });
     });
   }
@@ -157,9 +164,69 @@ class UI {
     totalMoney.innerText = money;
   }
 
+  openCart() {
+    cartOverlay.classList.add("showCartOverlay");
+    mainCart.classList.add("showCart");
+  }
+
+  closeCart() {
+    cartOverlay.classList.remove("showCartOverlay");
+    mainCart.classList.remove("showCart");
+  }
+
+  displayCart(cart) {
+    let result = "";
+    cart.forEach((item) => {
+      result += `
+          <div class="cart-item">
+            <img src="${item.info.image}" alt="" />
+            <div class="info-remove">
+              <h3>${item.info.title}</h3>
+              <h4>$<span data-id="${item.info.id}">${item.info.price}</span></h4>
+              <button class="remove-item" data-id="${item.info.id}">remove</button>
+            </div>
+            <div>
+              <i class="fas fa-chevron-up"></i>
+              <p class="item-amount">${item.amount}</p>
+              <i class="fas fa-chevron-down"></i>
+            </div>
+          </div>
+    `;
+    });
+    cartContent.innerHTML = result;
+  }
+
+  removeOneItem(id) {
+    id = parseInt(id);
+    userCart = userCart.filter((one) => one.info.id !== id);
+    this.updateCartInfo(userCart);
+    Store.saveCartToLocal(userCart);
+    const buttons = [...document.querySelectorAll(".bag-btn")];
+    const button = buttons.find((one) => parseInt(one.dataset.id) === id);
+    button.disabled = false;
+    button.innerText = "Add To Bag";
+  }
+
+  inCartEvents() {
+    mainCart.addEventListener("click", (event) => {
+      if (event.target.classList.contains("remove-item")) {
+        this.removeOneItem(event.target.dataset.id);
+      }
+    });
+  }
+
   settings() {
     userCart = Store.loadCart();
     this.updateCartInfo(userCart);
+    cartButton.addEventListener("click", this.openCart);
+    closeButtonInCart.addEventListener("click", this.closeCart);
+    cartOverlay.addEventListener("click", (event) => {
+      if (event.target.classList.contains("cart-overlay")) {
+        this.closeCart();
+      }
+    });
+    this.displayCart(userCart);
+    this.inCartEvents();
   }
 }
 
