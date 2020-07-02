@@ -10,7 +10,7 @@
   --mainWhite: #fff;
   --mainBlack: rgb(48, 47, 47);
   --mainGrey: rgb(235, 232, 232);
-  --mainTransition: all 0.25s linear;
+  --mainTransition: all 0.55s ease;
 }
 
 body {
@@ -35,6 +35,34 @@ header {
   display: flex;
   align-items: center;
   justify-content: space-between;
+  position: relative;
+}
+
+.nav-icon ul {
+  position: absolute;
+  left: -85px;
+  background: var(--mainBlack);
+  width: 200px;
+  height: 150px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  border-radius: 8px;
+  list-style: none;
+  opacity: 0;
+  pointer-events: none;
+  transition: all 0.5s ease;
+}
+
+li a {
+  color: white;
+  text-decoration: none;
+  font-size: 1.1rem;
+}
+
+li a:hover {
+  color: rgb(255, 100, 100);
 }
 
 .navbar h2 {
@@ -42,7 +70,7 @@ header {
 }
 
 .nav-icon {
-  font-size: 1.25rem;
+  font-size: 1.75rem;
   cursor: pointer;
 }
 
@@ -144,6 +172,12 @@ header {
 
 .product-img {
   width: 100%;
+  cursor: pointer;
+  transition: all 0.4s ease-out;
+}
+
+.product-img:hover {
+  transform: scale(1.1);
 }
 
 .brand-header {
@@ -211,10 +245,18 @@ header {
   transform: translateX(0);
 }
 
-@media screen and (min-width: 768px) {
+@media screen and (min-width: 700px) {
   .cart {
     width: 21vw;
     min-width: 360px;
+  }
+}
+
+@media screen and (max-width: 530px) {
+  .box {
+    width: 130px;
+    height: 75px;
+    font-size: 1.05rem;
   }
 }
 

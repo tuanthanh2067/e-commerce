@@ -53,6 +53,23 @@ sliderContainer.addEventListener("mouseout", () => {
 });
 
 // image slider ends here
+
+// nav bar drop down
+const hamburger = document.querySelector(".nav-icon");
+const navbarLIST = document.querySelector(".nav-bar-list");
+hamburger.addEventListener("mouseover", () => {
+  navbarLIST.style.opacity = "1";
+  navbarLIST.style.pointerEvents = "all";
+  onClick = true;
+});
+
+hamburger.addEventListener("mouseout", () => {
+  navbarLIST.style.opacity = "0";
+  navbarLIST.style.pointerEvents = "none";
+  onClick = false;
+});
+// end nav bar drop down
+
 let itemsLoaded = []; // each array will store name of that kind of item and info
 let userCart = [];
 let allButtons = [];
