@@ -55,6 +55,7 @@ sliderContainer.addEventListener("mouseout", () => {
 // image slider ends here
 let itemsLoaded = []; // each array will store name of that kind of item and info
 let userCart = [];
+let allButtons = [];
 // variables
 
 // end variables area
@@ -186,9 +187,9 @@ class UI {
               <button class="remove-item" data-id="${item.info.id}">remove</button>
             </div>
             <div>
-              <i class="fas fa-chevron-up"></i>
+              <i class="fas fa-chevron-up" data-id="${item.info.id}"></i>
               <p class="item-amount">${item.amount}</p>
-              <i class="fas fa-chevron-down"></i>
+              <i class="fas fa-chevron-down" data-id="${item.info.id}"></i>
             </div>
           </div>
     `;
@@ -203,14 +204,43 @@ class UI {
     Store.saveCartToLocal(userCart);
     const buttons = [...document.querySelectorAll(".bag-btn")];
     const button = buttons.find((one) => parseInt(one.dataset.id) === id);
-    button.disabled = false;
-    button.innerText = "Add To Bag";
+    if (button) {
+      button.disabled = false;
+      button.innerText = "Add To Bag";
+    }
+    this.displayCart(userCart);
+  }
+
+  placeOrderFunction() {
+    userCart.forEach((one) => {
+      this.removeOneItem(one.info.id);
+    });
   }
 
   inCartEvents() {
     mainCart.addEventListener("click", (event) => {
       if (event.target.classList.contains("remove-item")) {
         this.removeOneItem(event.target.dataset.id);
+      } else if (event.target.classList.contains("place-order")) {
+        this.placeOrderFunction();
+      } else if (event.target.classList.contains("fa-chevron-up")) {
+        const id = parseInt(event.target.dataset.id);
+        let item = userCart.find((one) => one.info.id === id);
+        item.amount++;
+        Store.saveCartToLocal(userCart);
+        this.updateCartInfo(userCart);
+        event.target.nextElementSibling.innerText = item.amount;
+      } else if (event.target.classList.contains("fa-chevron-down")) {
+        const id = parseInt(event.target.dataset.id);
+        let item = userCart.find((one) => one.info.id === id);
+        item.amount--;
+        if (item.amount <= 0) {
+          this.removeOneItem(id);
+        } else {
+          Store.saveCartToLocal(userCart);
+          this.updateCartInfo(userCart);
+          event.target.previousElementSibling.innerText = item.amount;
+        }
       }
     });
   }
@@ -226,7 +256,6 @@ class UI {
       }
     });
     this.displayCart(userCart);
-    this.inCartEvents();
   }
 }
 
@@ -255,6 +284,7 @@ document.addEventListener("DOMContentLoaded", () => {
     products.saveProductsToArray(product, "smartphone");
     Store.saveArrayProducts();
     ui.getBagButtons("smartphone");
+    ui.inCartEvents();
   });
 
   const boxesDOM = [...document.querySelectorAll(".box")];
